@@ -43,10 +43,10 @@ const getGiftById = async (req, res, next) => {
 }
 
 // Buscar presente por Keyword/Palavra-chave
-const searchGiftsByParams = async (req, res, next) => {
+const searchGiftsByKeyword = async (req, res, next) => {
   try {
-    const params = req.query.params;
-    const searchedGift = await giftService.findByKeyword(params);
+    const key = req.query.search;
+    const searchedGift = await giftService.findByKeyword(key);
 
     if (!searchedGift) return res.status(404).json({ error: `Presente não encontrado`})
 
@@ -93,6 +93,6 @@ const deleteGiftById = async (req, res, next) => {
 exports.createGift = createGift;
 exports.getAllGifts = getAllGifts;
 exports.getGiftById = getGiftById;
-exports.searchGiftsByParams = searchGiftsByParams;
+exports.searchGiftsByKeyword = searchGiftsByKeyword;
 exports.updateGiftById = updateGiftById;
 exports.deleteGiftById = deleteGiftById;

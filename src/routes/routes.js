@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/login', userController.login);
 
 // Criar presente
-router.post('/gifts', giftController.createGift);
+router.post('/gifts', giftMiddleware.validateCreateGift, giftController.createGift);
 
 // Buscar todos os presentes
 router.get('/gifts', giftController.getAllGifts);
@@ -18,10 +18,10 @@ router.get('/gifts', giftController.getAllGifts);
 router.get('/gifts/:id', giftController.getGiftById);
 
 // Buscar presente por Keyword/Palavra-chave
-router.get('/gifts/?params=key', giftController.searchGiftsByParams);
+router.get('/gifts/?search=key', giftController.searchGiftsByKeyword);
 
 // Editar presente por ID/ExternalCode
-router.patch('/gifts/:id', giftController.updateGiftById);
+router.patch('/gifts/:id', giftMiddleware.validateUpdateGift, giftController.updateGiftById);
 
 // Deletar presente por ID/ExternalCode
 router.delete('/gifts/:id', giftController.deleteGiftById);
