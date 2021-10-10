@@ -1,6 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 
-const DUMMY_GIFTS = require('../models/gift.model');
+const DUMMY_GIFTS = require('../mock/gift.mock');
 
 const create = async (title, isTaken, person) => {
   const createdGift = {

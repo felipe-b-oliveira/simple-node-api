@@ -1,10 +1,13 @@
-let DUMMY_USERS = [
-  {
-    id: 'u1',
-    name: 'Giselle',
-    email: 'giselle@gmail.com',
-    password: 'xl3110'
-  }
-]
+const mongoose = require('mongoose')
 
-module.exports = DUMMY_USERS;
+let model = mongoose.model;
+let Schema = mongoose.Schema;
+
+const UserModel = model('User', new Schema({
+  _id: String,
+  name: String,
+  email: String,
+  password: { type: String, select: false }
+}), 'user')
+
+module.exports = UserModel

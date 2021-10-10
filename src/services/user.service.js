@@ -1,4 +1,4 @@
-const DUMMY_USERS = require('../models/users.model');
+const DUMMY_USERS = require('../mock/users.mock');
 
 const login = async (email, password) => {
   const userEmail = DUMMY_USERS.find(u => u.email === email);

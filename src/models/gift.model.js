@@ -1,15 +1,13 @@
-let DUMMY_GIFTS = [
-  {
-    id: 'g1',
-    title: 'Conjunto de talheres',
-    isTaken: false,
-    person: ''
-  }, {
-    id: 'g2',
-    title: 'Travessa de vidro',
-    isTaken: true,
-    person: 'Bianca'
-  }
-]
+const mongoose = require('mongoose')
 
-module.exports = DUMMY_GIFTS;
+let model = mongoose.model;
+let Schema = mongoose.Schema;
+
+const GiftModel = model('Gift', new Schema({
+  _id: String,
+  title: String,
+  isTaken: Boolean,
+  person: String
+}), 'gift')
+
+module.exports = GiftModel

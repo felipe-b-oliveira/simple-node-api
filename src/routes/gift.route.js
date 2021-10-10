@@ -1,12 +1,8 @@
 const express = require('express');
 const giftController = require('../controllers/gift.controller');
-const userController = require('../controllers/user.controller');
 const giftMiddleware = require('../middlewares/gift.middleware');
 
 const router = express.Router();
-
-// Login
-router.post('/login', userController.login);
 
 // Criar presente
 router.post('/gifts', giftMiddleware.validateCreateGift, giftController.createGift);
